@@ -31,17 +31,48 @@ public class Car {
         System.out.println("Is car on: " + isTheCarOn);
         System.out.println("Cars's condition: " + condition);
         System.out.println("Name of Car: " + nameOfCar);
+        System.out.println("Number of people in Car:" + numberOfPeople);
     }
     public void wreckCar(){
         condition  = 'C';
     }
+    public void getIn() {
+        numberOfPeople++;
+    }
+    public void getOut() {
+        if (numberOfPeople > 0){
+            numberOfPeople--;
+        }
+    }
+
+    public double howManyMilesTillOutOfGas(){
+        return currentFuel * mpg;
+    }
+    public double maxMilesPerFillUp(){
+        return maxFuel*mpg;
+    }
+    public void turnedTheCarOn(){
+        if (isTheCarOn == false){
+            isTheCarOn = true;
+        }
+    }
 
     public static void main(String[] args) {
         Car birthdayPresent = new Car(10, 20455,true);
-        System.out.println("Birthday Car");
+        System.out.println("Birthday Car V1");
         birthdayPresent.printVariables();
-        Car christmasPresent = new Car(500, 50000.23, false);
-        System.out.println("Christmas Car");
-        christmasPresent.printVariables();
+        System.out.println("Birthday Car V2");
+        birthdayPresent.getIn();
+        birthdayPresent.getIn();
+        birthdayPresent.getIn();
+        System.out.println("Miles Left: " + birthdayPresent.howManyMilesTillOutOfGas());
+        System.out.println("Max Miles:" + birthdayPresent.maxMilesPerFillUp());
+        birthdayPresent.printVariables();
+        birthdayPresent.getIn();
+        System.out.println("Birthday Car V3");
+        birthdayPresent.printVariables();
+//        Car christmasPresent = new Car(500, 50000.23, false);
+//        System.out.println("Christmas Car");
+//        christmasPresent.printVariables();
     }
 }
