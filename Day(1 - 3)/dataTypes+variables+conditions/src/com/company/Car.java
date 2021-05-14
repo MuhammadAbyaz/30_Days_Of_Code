@@ -15,8 +15,10 @@ public class Car {
     double currentFuel = 8;
     double mpg = 26.4;
 
-    int numberOfPeople = 1;
+    int numberOfPeopleInCar = 1;
+    int maxNumberOfPeopleInCar = 6;
 
+    //Constructor
     public Car(int customMinSpeed, double customWeight, boolean customIsCarOn) {
         minSpeed = customMinSpeed;
         weightOfCar = customWeight;
@@ -31,17 +33,25 @@ public class Car {
         System.out.println("Is car on: " + isTheCarOn);
         System.out.println("Cars's condition: " + condition);
         System.out.println("Name of Car: " + nameOfCar);
-        System.out.println("Number of people in Car:" + numberOfPeople);
+        System.out.println("Number of people in Car:" + numberOfPeopleInCar);
     }
     public void wreckCar(){
         condition  = 'C';
     }
     public void getIn() {
-        numberOfPeople++;
+        System.out.println(numberOfPeopleInCar);
+        if(numberOfPeopleInCar < maxNumberOfPeopleInCar){
+            numberOfPeopleInCar++;
+            System.out.println("Someone got In!");
+        } else{
+            System.out.println("The Car is full " + numberOfPeopleInCar + " = " + maxNumberOfPeopleInCar);
+        }
     }
     public void getOut() {
-        if (numberOfPeople > 0){
-            numberOfPeople--;
+        if (numberOfPeopleInCar > 1){
+            numberOfPeopleInCar--;
+        } else {
+            System.out.println("NoOne is in the car: " + numberOfPeopleInCar);
         }
     }
 
@@ -54,6 +64,8 @@ public class Car {
     public void turnedTheCarOn(){
         if (isTheCarOn == false){
             isTheCarOn = true;
+        } else{
+            System.out.println("Car is already on: " + isTheCarOn);
         }
     }
 
@@ -74,5 +86,16 @@ public class Car {
 //        Car christmasPresent = new Car(500, 50000.23, false);
 //        System.out.println("Christmas Car");
 //        christmasPresent.printVariables();
+        Car tommyCar = new Car(100, 20496, true);
+        System.out.println("Tommy's Car: ");
+        tommyCar.getOut();
+        tommyCar.getOut();
+        tommyCar.getIn();
+        tommyCar.getIn();
+        tommyCar.getIn();
+        tommyCar.getIn();
+        tommyCar.getIn();
+        tommyCar.getIn();
+        tommyCar.turnedTheCarOn();
     }
 }
